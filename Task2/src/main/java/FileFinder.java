@@ -81,7 +81,7 @@ public class FileFinder {
                             result.put(file, matchIndex);
                         }
                     } else if(mode == FILE_MODE){
-                        findSubstring(root, result, text);
+                        findSubstring(file, result, text);
                     }
                 }
             }
@@ -98,6 +98,8 @@ public class FileFinder {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (NullPointerException ex){
+            System.out.println(file.getAbsolutePath());
         }
     }
 
