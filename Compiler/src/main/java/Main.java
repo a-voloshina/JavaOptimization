@@ -10,16 +10,16 @@ import java.util.regex.Pattern;
 public class Main {
     public static void main(String[] args) throws Exception {
         if (args.length == 0) {
-            throw new IllegalArgumentException("Program needs 2 args");
+            throw new IllegalArgumentException("Program needs at least 1 args");
         }
         String inputFileName = args[0];
         String outputFileName;
         if(args.length > 1){
             outputFileName = args[1];
         } else {
-            outputFileName = "examples\\out\\Main.class";
+            outputFileName = "examples\\output\\Main.class";
         }
-        String fileAsString = readProgramFromFile(args[0]);
+        String fileAsString = readProgramFromFile(inputFileName);
         if (fileAsString != null) {
             FLanguageLexer lexer = new FLanguageLexer(CharStreams.fromString(fileAsString));
             CommonTokenStream tokens = new CommonTokenStream(lexer);
@@ -68,8 +68,6 @@ public class Main {
                 stringBuilder.append(line);
             }
             return stringBuilder.toString();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
