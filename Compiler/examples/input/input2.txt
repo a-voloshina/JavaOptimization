@@ -1,0 +1,10 @@
+bool cond = false;
+int test = 128;
+while(test >= 0){
+    test = test-1;
+    if(test == (test / 2)){
+        cond = true;
+        print("middle");
+    }
+}
+print(cond);
